@@ -70,7 +70,7 @@
     color: var(--clr-black);
     font-size: var(--fs-100);
     font-weight: 400;
-    background-color: rgb(179, 179, 179);
+    background-color: rgb(240, 233, 223);
     text-wrap: pretty;
   }
 
@@ -94,6 +94,7 @@
     display: grid;
     gap: var(--space-3);
     margin-inline: auto;
+    margin-block-start: 3rem;
     max-inline-size: 1120px;
     grid-template-areas:
       'one'
