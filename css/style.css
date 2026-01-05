@@ -21,6 +21,7 @@
   --space-2: 1rem; /* 16px */
   --space-3: 1.5rem; /* 24px */
   --space-4: 2rem; /* 32px */
+  --space-5: 2.5rem; /* 40px */
 }
 
 @layer reset {
@@ -50,7 +51,7 @@
   h4,
   h5,
   h6 {
-    font-weight: 500;
+    font-weight: 600;
   }
 
   img {
@@ -92,6 +93,25 @@
   .bento-wrapper {
     display: grid;
     gap: var(--space-3);
+    margin-inline: auto;
+    max-inline-size: 1120px;
+    grid-template-areas:
+      'one'
+      'two'
+      'three'
+      'four'
+      'five'
+      'six'
+      'seven'
+      'eight';
+
+    @media (width > 960px) {
+      grid-template-areas:
+        'seven one one four'
+        'seven two three four'
+        'eight two three four'
+        'eight six five five';
+    }
   }
 
   .bento-wrapper > * {
@@ -103,6 +123,7 @@
 
     display: grid;
     gap: var(--section-gap, var(--space-2));
+    align-items: var(--section-vertical, start);
     align-content: var(--section-vertical, start);
     justify-items: var(--section-horizontal, start);
     text-align: var(--section-horizontal, start);
@@ -126,8 +147,16 @@
     --section-horizontal: center;
     --section-image-width: 65%;
 
+    grid-area: one;
+
     img {
       margin-block-start: var(--space-2);
+    }
+
+    @media (width > 960px) {
+      --section-font-size: var(--fs-500);
+      --section-image-width: 60%;
+      padding-block: var(--space-5);
     }
   }
 
@@ -136,9 +165,17 @@
     --section-padding: var(--space-2);
     --section-image-order: -1;
 
+    grid-area: two;
+
     > img {
       filter: drop-shadow(0 0 1rem hsla(0, 0%, 0%, 0.329));
       border-radius: 100px;
+    }
+
+    @media (width > 960px) {
+      --section-image-width: 150%;
+      --section-padding: var(--space-3);
+      --section-vertical: center;
     }
   }
 
@@ -148,11 +185,16 @@
     --section-padding: 0;
     --section-vertical: end;
 
+    grid-area: three;
+
     padding: var(--space-2) var(--space-2) 0 var(--space-2);
 
     img {
       --section-image-width: 65%;
       margin-block-end: -1rem;
+    }
+
+    @media (width > 960px) {
     }
   }
 
@@ -160,6 +202,20 @@
     --section-background: var(--clr-purple-100);
     --heading-font-size: var(--fs-200);
     --section-horizontal: center;
+
+    grid-area: four;
+
+    @media (width > 960px) {
+      --section-horizontal: start;
+      --section-vertical: center;
+      --section-gap: var(--space-3);
+      --section-padding: var(--space-3);
+
+      img {
+        --section-image-width: 175%;
+        margin-inline-start: 0.5rem;
+      }
+    }
   }
 
   .bento-wrapper > :nth-child(5) {
@@ -170,6 +226,17 @@
     --section-horizontal: center;
 
     --section-image-width: 75%;
+
+    grid-area: five;
+
+    @media (width > 960px) {
+      grid-template-columns: 1fr 1fr;
+      --section-gap: var(--space-1);
+      --section-padding: var(--space-2);
+      --section-horizontal: start;
+      --section-vertical: center;
+      --section-image-width: 100%;
+    }
   }
 
   .bento-wrapper > :nth-child(6) {
@@ -177,9 +244,18 @@
     --section-image-width: 55%;
     --section-gap: var(--space-2);
 
+    grid-area: six;
+
     span {
       font-size: var(--fs-100);
       display: block;
+    }
+
+    @media (width > 960px) {
+      --heading-font-size: var(--fs-500);
+      --section-vertical: center;
+      --section-gap: var(--space-3);
+      --section-image-width: 75%;
     }
   }
 
@@ -189,20 +265,40 @@
 
     --section-image-width: 60%;
 
+    grid-area: seven;
+
     em {
       color: var(--clr-purple-500);
     }
+
+    @media (width > 960px) {
+      --section-image-width: 100%;
+      --section-vertical: center;
+      --section-gap: var(--space-3);
+    }
   }
 
-    .bento-wrapper > :nth-child(8) {
+  .bento-wrapper > :nth-child(8) {
     --section-background: var(--clr-yellow-500);
     --heading-font-size: var(--fs-300);
     --section-padding: var(--space-3);
     --section-vertical: end;
 
+    grid-area: eight;
 
     img {
       --section-image-width: 65%;
+    }
+
+    @media (width > 960px) {
+      --section-padding: var(--space-2);
+      --section-horiztonal: center;
+      --section-vertical: space-evenly;
+      --section-gap: var(--space-4);
+
+      img {
+        --section-image-width: 100%;
+      }
     }
   }
 }
